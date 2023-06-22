@@ -49,7 +49,7 @@ public class User {
 	}
 
 	// getter
-	public int getUsercode() {
+	public int getUserCode() {
 		return this.userCode;
 	}
 
@@ -92,7 +92,7 @@ public class User {
 	//출력
 	@Override
 	public String toString() {
-		String str=String.format("%s(%d) : %s/%s\n", this.name,this.userCode,this.id,this.password);
+		String str=String.format("name:%s(%d) : id=%s/pwd=%s\n", this.name,this.userCode,this.id,this.password);
 		
 		
 		//초기화

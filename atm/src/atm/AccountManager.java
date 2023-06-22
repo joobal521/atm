@@ -24,7 +24,7 @@ public class AccountManager {
 		int accNumber=generateRandomCode();
 		int accPassword=Atm.inputNumber("계좌 비밀번호");
 		
-		acc=new Account(user.getUsercode(), accNumber,accPassword);
+		acc=new Account(user.getUserCode(), accNumber, accPassword);
 		this.list.add(acc);
 		
 		//AccountManager의 list에 추가된 객체를 생성과 동시에 반환 받음
@@ -36,7 +36,7 @@ public class AccountManager {
 		
 	}
 	
-	private int generateRandomCode() {
+	private int generateRandomCode() {// ####-####
 		int code=0;
 		
 		while(true) {

@@ -85,7 +85,7 @@ public class Atm {
     		   userManager.joinUser();
     		   
   	        }else if(select==LEAVE) {
- 		    // userManager.leaveUser();
+ 		    this.log=userManager.leaveUser(this.log);
   		   
    	   }else if(select==LOGIN) {
    		  this.log=userManager.loginUser(this.log);

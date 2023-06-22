@@ -29,7 +29,7 @@ public class UserManager {
 	}
 
 	// 메소드
-	// 1)회원가입
+	// #1회원가입
 	public void joinUser() {
 
 		int userCode = generateRandomClde();// 1-1 사용자코드 생성
@@ -61,7 +61,7 @@ public class UserManager {
 
 			boolean dupl = false;
 			for (User user : this.list) {// 향상된 for문
-				if (user.getUsercode() == code) {
+				if (user.getUserCode() == code) {
 					dupl = true;
 				}
 			}
@@ -78,7 +78,7 @@ public class UserManager {
 	// 유저 코드가 로그인겨~
 	public User getUserByUserCode(int log) { // log:userCode
 		for (User user : this.list) {
-			if (user.getUsercode() == log) {
+			if (user.getUserCode() == log) {
 				return user;
 			}
 		}
@@ -97,18 +97,27 @@ public class UserManager {
 		return dupl;
 	}
 
-	public void leaveUser() {
+	//#2회원탈퇴
+	public int leaveUser(int log) {
 		// 로그인 상태
 		// 아이디를 입력하면 탈퇴
-		// if(isLogin())
+		if(log!=0) {
+		System.out.println("==정말 헤어지는겨~? So Sad~");
 		System.out.print("id:");
 		String id = Atm.scanner.next();
-
+    
 		for (User user : this.list) {
 			if (user.getId().equals(id)) {
-
+                  this.list.remove(user);
+                  log=0;
+                  System.out.println("☆탈퇴 완!");
 			}
 		}
+		}else {
+			System.out.println("★로그인 해주세요!!");
+		}
+		
+		return log;
 
 	}
 
@@ -117,35 +126,43 @@ public class UserManager {
 		if(log!=0) {//이미 로그인 상태는 안됨
 			System.out.println("★이미 로그인된 상태!!");
 		}else {
+		System.out.println("==로그인 Start==");	
 		System.out.print("id: ");
 		String id = Atm.scanner.next();
 		System.out.print("password: ");
 		String pwd = Atm.scanner.next();
 		
 		// 회원가입 정보와 일치하면!
+		        boolean check=false;
 				for (User user : this.list) {
 					if (user.getId().equals(id) && user.getPassword().equals(pwd)) {
-						log = user.getUsercode();
-						System.out.println("☆로그인 완!");
-					}else {
-						System.out.println("★아이디와 비밀번호가 일치하지 않는겨~");
+						log = user.getUserCode();
+						check=true;
+						
 					}
 				}
+				if(!check) {
+					System.out.println("★아이디와 비번이 일치하지 않는겨~");
+				}else {
+					System.out.println("☆로그인 완!");
+					
+				}
 		}
-		
 	    return log;
 
 	}
 
-	// #로그아웃
+	// #4로그아웃
 	public int logoutUser(int log) {
 		for (User user : this.list) {
-			if (log == user.getUsercode()) {
+			if (log == user.getUserCode()) {
 				log =-1;
 				System.out.println("로그아웃 완!");
 			}
 		}
 		return log;
 	}
+	
+	
 
 }// class끝
