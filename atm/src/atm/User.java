@@ -11,6 +11,8 @@ public class User {
 	private String password;// R 수정 가능
 	private int age; // 수정가능
 	private ArrayList<Account> accs;// 수정가능
+	//계좌 여러개 만들 수 있는 배열
+	//accs.add(A)
 
 	// #.2생성자
 	public User(int userCode, String name, String id, String password) {
@@ -87,6 +89,7 @@ public class User {
 		this.accs = accs;// 복제본 제공
 	}
 	
+	//출력
 	@Override
 	public String toString() {
 		String str=String.format("%s(%d) : %s/%s\n", this.name,this.userCode,this.id,this.password);

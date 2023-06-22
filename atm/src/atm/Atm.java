@@ -24,9 +24,10 @@ public class Atm {
 	private UserManager userManager;
 	private AccountManager accManager;
 	private FileManager fileManager;
+	
+	private int log=0;
 
 	public Atm(String brandName) {
-
 		this.brandName = brandName;
 
 		this.userManager = UserManager.getInstance();
@@ -52,9 +53,9 @@ public class Atm {
 
 	}
 
-	private int inputNumber(String msg) {
+	public static int inputNumber(String msg) {
 		System.out.print(msg + ":");
-		String input = this.scanner.next();
+		String input = Atm.scanner.next();
 
 		int number = -1;
 		try {
@@ -70,6 +71,8 @@ public class Atm {
 		for (User user : userManager.getList()) {
 			System.out.println(user);
 		}
+		// 확인용
+		System.out.println("로그인 된 회원"+this.log);
 	}
 
 	public void run() {
@@ -82,14 +85,14 @@ public class Atm {
     		   userManager.joinUser();
     		   
   	        }else if(select==LEAVE) {
- 		      userManager.leaveUser();
-//    		   
-//    	   }else if(select==LOGIN) {
-//    		   userManager.loginUser();
-//    	   }else if(select==LOGOUT) {
-//    		   userManager.logoutUser();    	  
-//    	   }else if(select==CREATE_ACC) {    		   
-//    			   accManager.createAcc();    	   
+ 		    // userManager.leaveUser();
+  		   
+   	   }else if(select==LOGIN) {
+   		  this.log=userManager.loginUser(this.log);
+   	   }else if(select==LOGOUT) {
+   		  this.log=userManager.logoutUser(this.log);    	  
+   	   }else if(select==CREATE_ACC) {    		   
+    	accManager.createAccount(userManager.getUserByUserCode(this.log));    	   
 //    	   }else if(select==DELETE_ACC){
 //   		   accManager.deleteAcc();
 //   	       }else if(select==VIEW_BALANCE){
