@@ -91,10 +91,14 @@ public class Atm {
    		  this.log=userManager.loginUser(this.log);
    	   }else if(select==LOGOUT) {
    		  this.log=userManager.logoutUser(this.log);    	  
-   	   }else if(select==CREATE_ACC) {    		   
+   	   }else if(select==CREATE_ACC) { 
+   		   if(log!=0) {
     	accManager.createAccount(userManager.getUserByUserCode(this.log));    	   
-//    	   }else if(select==DELETE_ACC){
-//   		   accManager.deleteAcc();
+    	 }else {
+    		 System.out.println("★계좌생성 불가");
+    	 }
+    	}else if(select==DELETE_ACC){
+//  	   accManager.deleteAcc();
 //   	       }else if(select==VIEW_BALANCE){
 //    		   accManager.viewBalance(); 
 //    	   }else if(select==INPUT_MONEY){
