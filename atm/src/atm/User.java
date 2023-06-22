@@ -62,7 +62,8 @@ public class User {
 	public String getPassword() {
 		return this.password;
 	}
-
+    
+	//수정 가능(setter)
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -70,15 +71,18 @@ public class User {
 	public int getAge() {
 		return this.age;
 	}
-
+	
+	//수정 가능(setter)
 	public void setAge(int age) {
 		this.age = age;
 	}
-
+    
+	//조회만 가능한 용도
 	public ArrayList<Account> getAccs() {
 		return (ArrayList<Account>) this.accs.clone();// 복제본 제공
 	}
 
+	//수정 가능(setter)
 	public void setAccs(ArrayList<Account> accs) {
 		this.accs = accs;// 복제본 제공
 	}
@@ -88,6 +92,7 @@ public class User {
 		String str=String.format("%s(%d) : %s/%s\n", this.name,this.userCode,this.id,this.password);
 		
 		
+		//초기화
 		for(int i=0; i<this.accs.size(); i++) {
 			str+="\n"+this.accs.get(i);
 				
@@ -95,7 +100,8 @@ public class User {
 		return str;
 		
 	}
-
+	
+     
 	/*
 	 *  name(userCode) : id/password
 	 * ㄴaccNumber1(pasword): balance1

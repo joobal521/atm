@@ -7,7 +7,6 @@ package atm;
  *ㄴ뱅킹서비스(입금/인출/이체) 
  * ㄴ파일처리(저장/로드)
  * 
- * 
  */
 
 public class _Main {
@@ -19,6 +18,6 @@ public class _Main {
 
 
 
-	}
+	}//main끝
 
-}
+}//class끝

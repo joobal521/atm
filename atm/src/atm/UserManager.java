@@ -23,42 +23,37 @@ public class UserManager {
 	public static UserManager getInstance() {//getter로 불러옴
 		return instance;
 	}
-	
+
+	public ArrayList<User>getList(){
+		return (ArrayList<User>) this.list.clone();
+	}
 	
 	//메소드
+	//1)회원가입
 	public void joinUser(){
 		
-		int userCode=generateRandomClde();
+		int userCode=generateRandomClde();//1-1 사용자코드 생성
 		System.out.print("id:");
 		String id=Atm.scanner.next();
 		System.out.print("password:");
 		String password=Atm.scanner.next();
 		System.out.print("name:");
 		String name= Atm.scanner.next();
-		if(!duplId(id)) {
+		
+		if(!duplId(id)){//1-2 아이디 중복체크
 		User user= new User(userCode, name, id, password);
 		this.list.add(user);
 		System.out.println("회원가입 완료");
 		}else {
 		System.err.println("중복되는 아이디 입니다.");
 		}
+		
 	}
 	
-	public ArrayList<User>getList(){
-		return (ArrayList<User>) this.list.clone();
-	}
 	
-	private boolean duplId(String id) {
-		boolean dupl=false;
-		for(User user: this.list) {
-			if(user.getId().equals(id)) {
-				dupl=true;
-			}
-			
-		}
-		return dupl;
-	}
 	
+	
+	//1-1 사용자 코드 생성
 	private int generateRandomClde() {
 		int code=0;
 		
@@ -71,6 +66,7 @@ public class UserManager {
 				dupl=true;
 			}
 		}
+		
 		if(!dupl) {
 			break;
 		}
@@ -80,6 +76,29 @@ public class UserManager {
 		return code;
 	}
 	
+	//1-2 아이디 중복 체크
+		private boolean duplId(String id) {
+			boolean dupl=false;
+			for(User user: this.list) {
+				if(user.getId().equals(id)) {
+					dupl=true;
+				}
+				
+			}
+			return dupl;
+		}
+		
+	private void leaveUser() {
+		//아이디를 입력하면 탈퇴
+		System.out.print("id:");
+		String id=Atm.scanner.next();
+		
+		for(int i=0; i<this.list.length; i++) {
+			    if()
+		}
+		
+		
+	}
 	
 	
 	
