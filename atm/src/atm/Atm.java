@@ -75,9 +75,12 @@ public class Atm {
 		System.out.println("로그인 된 회원" + this.log);
 	}
 
+	
 	public void run() {
         //UserManager um1=UserManager.getInstance();//해당 객체에 접근할 수 있게
+		
        while(true) {
+    	   
     	   printAlldata();//검토용
     	   printMenu();
     	   int select=inputNumber("메뉴");
@@ -108,11 +111,11 @@ public class Atm {
   	       }else if(select==VIEW_BALANCE){
   	    	   accManager.viewBalance(userManager.getUserByUserCode(this.log)); 
   	   }else if(select==INPUT_MONEY){
-//    		   accManager.inputMoney(userManager.getUserByUserCode(this.log));
-//    	   }else if(select==OUT_MONEY){       
-//    		   accManager.outMoney();
-//    	   }else if(select==MOVE_MONEY){
-//    		   accManager.moveMoney();
+  		   accManager.inputMoney(userManager.getUserByUserCode(this.log));
+    	   }else if(select==OUT_MONEY){       
+    		   accManager.outMoney(userManager.getUserByUserCode(this.log));
+  	   }else if(select==MOVE_MONEY){
+    		   accManager.moveMoney(userManager.getUserByUserCode(this.log));
 //    	   }else if(select==SAVE_FILE){
 //    		   fileManager.saveFile()
 //   	      }else if(select==LOAD_FILE){

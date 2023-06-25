@@ -156,7 +156,7 @@ public class UserManager {
 	public int logoutUser(int log) {
 		for (User user : this.list) {
 			if (log == user.getUserCode()) {
-				log =-1;
+				log =0;
 				System.out.println("로그아웃 완!");
 			}
 		}

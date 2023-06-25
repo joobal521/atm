@@ -18,6 +18,14 @@ private static FileManager instance = new FileManager();
 public static FileManager getInstance() {
 	return instance;
 }
+
+
+public void saveFile() {
+	
+}
+
+
+
 	
 }
 
