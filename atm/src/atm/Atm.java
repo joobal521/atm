@@ -24,8 +24,8 @@ public class Atm {
 	private UserManager userManager;
 	private AccountManager accManager;
 	private FileManager fileManager;
-	
-	private int log=0;
+
+	private int log = 0;
 
 	public Atm(String brandName) {
 		this.brandName = brandName;
@@ -72,7 +72,7 @@ public class Atm {
 			System.out.println(user);
 		}
 		// 확인용
-		System.out.println("로그인 된 회원"+this.log);
+		System.out.println("로그인 된 회원" + this.log);
 	}
 
 	public void run() {
@@ -81,14 +81,20 @@ public class Atm {
     	   printAlldata();//검토용
     	   printMenu();
     	   int select=inputNumber("메뉴");
+    	  if(log==0) {
     	   if(select==JOIN) {
     		   userManager.joinUser();
-    		   
-  	        }else if(select==LEAVE) {
+    	   } else if(select==LOGIN) {
+    	   		  this.log=userManager.loginUser(this.log);
+    	   }
+    	   
+  	        }else {
+    	  if(select==LEAVE) {
+  	      
+  	        
  		    this.log=userManager.leaveUser(this.log);
   		   
-   	   }else if(select==LOGIN) {
-   		  this.log=userManager.loginUser(this.log);
+   	
    	   }else if(select==LOGOUT) {
    		  this.log=userManager.logoutUser(this.log);    	  
    	   }else if(select==CREATE_ACC) { 
@@ -98,11 +104,11 @@ public class Atm {
     		 System.out.println("★계좌생성 불가");
     	 }
     	}else if(select==DELETE_ACC){
-//  	   accManager.deleteAcc();
-//   	       }else if(select==VIEW_BALANCE){
-//    		   accManager.viewBalance(); 
-//    	   }else if(select==INPUT_MONEY){
-//    		   accManager.inputMoney();
+ 	   accManager.deleteAcc(userManager.getUserByUserCode(this.log));
+  	       }else if(select==VIEW_BALANCE){
+  	    	   accManager.viewBalance(userManager.getUserByUserCode(this.log)); 
+  	   }else if(select==INPUT_MONEY){
+//    		   accManager.inputMoney(userManager.getUserByUserCode(this.log));
 //    	   }else if(select==OUT_MONEY){       
 //    		   accManager.outMoney();
 //    	   }else if(select==MOVE_MONEY){
@@ -111,14 +117,16 @@ public class Atm {
 //    		   fileManager.saveFile()
 //   	      }else if(select==LOAD_FILE){
 //    		   fileManager.loadFile();
-//    	   }else if(select==QUIT){
-//    		   break;
+   	   }else if(select==QUIT){
+    		   break;
     	   }
     	   }
+       }//while끝
     	   
        
        
 
-      }
+       }//run끝
 
-}// class끝
+}
+// class끝
